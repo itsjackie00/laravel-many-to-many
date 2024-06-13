@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\ComicController;
+use App\Http\Controllers\Admin\ProjectController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +37,8 @@ require __DIR__ . '/auth.php';
 
 Route::fallback(function () {
     return redirect()->route('admin.dashboard');
+});
+
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('projects', ProjectController::class);
 });
