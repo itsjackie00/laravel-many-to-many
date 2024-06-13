@@ -25,7 +25,9 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
-            'image' => 'nullable|image|max:2048'
+            'image' => 'nullable|image|max:2048',
+            'link' => 'nullable|url',
+            'github' => 'nullable|url'
         ]);
     
         $project = new Project($request->all());
